@@ -42,6 +42,8 @@ button {
     font-weight: 600;
 
     border-radius: 5px;
+    color: #FAF8F1;
+    background-color: #ABC270;
 }
 
 .display {
@@ -52,4 +54,24 @@ button {
     margin: auto;
     margin-bottom: 10px;
     letter-spacing: 2px;
+}
+
+.operator,
+.equation {
+    background-color: #fdbc87;
+}
+
+.digit,
+.point,
+.plusminus {
+    background-color: #ECF9FF;
+    color: black;
+}
+
+.active {
+    background-color: #efe2d9;
+}
+
+.pressed {
+    transform: scale(0.955);
 }
