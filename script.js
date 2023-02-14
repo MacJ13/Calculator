@@ -63,17 +63,6 @@ function displayInputNumbers(e){
     displayInput.value = inputStr; 
 }
 
-function updateOperator(key){
-    // call the function to clear inputStr variable to empty string
-    operate()
-
-    // assign displayInput value to operand1 and convert to number
-    operand1 = +displayInput.value
-    
-    // assign mathematical operator to variable 'operator' from clicked operator button
-    operator = key;
-
-}
 
 function operate(){
     // clear inputStr variable to empty string
@@ -102,6 +91,28 @@ function operate(){
     operator = '';
 }
 
+function updateOperator(key){
+    // call the function to clear inputStr variable to empty string
+    operate()
+
+    // assign displayInput value to operand1 and convert to number
+    operand1 = +displayInput.value
+    
+    // assign mathematical operator to variable 'operator' from clicked operator button
+    operator = key;
+
+}
+
+function undoTyping(){
+    // we remove last number from display string
+    
+    // if inputStr is empty we assign 0 
+    inputStr = (displayInput.value.slice(0, displayInput.value.length -1)) || '0';
+    
+    displayInput.value = inputStr;
+    
+}
+
 
 // listen events after click on one of the digit buttons
 digitButtons.forEach( btn => btn.addEventListener('click', displayInputNumbers));
@@ -114,3 +125,6 @@ operatorButtons.forEach( btn => btn.addEventListener('click', e=> {
 
 // listen event after click on equation button
 equationButton.addEventListener('click', operate);
+
+// listen event after click on backspace button
+backspaceButton.addEventListener('click', undoTyping);
