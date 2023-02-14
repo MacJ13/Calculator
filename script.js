@@ -64,6 +64,8 @@ function displayInputNumbers(e){
 }
 
 function updateOperator(key){
+    // call the function to clear inputStr variable to empty string
+    operate()
 
     // assign displayInput value to operand1 and convert to number
     operand1 = +displayInput.value
@@ -71,6 +73,33 @@ function updateOperator(key){
     // assign mathematical operator to variable 'operator' from clicked operator button
     operator = key;
 
+}
+
+function operate(){
+    // clear inputStr variable to empty string
+    inputStr = '';
+
+    // if operator doesn't exist we leave from fucntion
+    if(!operator) return;
+
+    // assign displayInput value to second operand variable
+    // convert to displayInput to number
+    operand2 = +displayInput.value;
+
+    // display error if it's division by 0 and leave the function
+    if(operand2 === 0 && operator === '/'){
+        displayInput.value = 'ERROR!';
+        return
+    }
+
+    // assign chosen property to call proper mathematical function
+    const calculate = calculation[operator];
+
+    // assign result to displayInput 
+    displayInput.value = calculate(operand1, operand2);
+    
+    // assign variable operator to empty string after calculation
+    operator = '';
 }
 
 
@@ -82,3 +111,6 @@ operatorButtons.forEach( btn => btn.addEventListener('click', e=> {
     const {key} = e.target.dataset;
     updateOperator(key);
 }))
+
+// listen event after click on equation button
+equationButton.addEventListener('click', operate);
