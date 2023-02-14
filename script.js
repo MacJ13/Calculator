@@ -145,3 +145,9 @@ backspaceButton.addEventListener('click', undoTyping);
 
 // listen event after click on point button
 pointButton.addEventListener('click', updateToFloat);
+
+// listen for event of set positive or negative number
+plusminusButton.addEventListener('click', () => { 
+    displayInput.value *= (-1) 
+    inputStr = displayInput.value;
+ });
