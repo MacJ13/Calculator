@@ -10,6 +10,12 @@ const pointButton = document.querySelector('.point');
 const clearButton = document.querySelector('.clear');
 
 
+// global variable:
+let operand1 = '';
+let operand2 = '';
+let operator = '';
+let inputStr = displayInput.value // assign initial display elemnent value;
+
 // addition function
 function add(a, b){
     return a + b;
@@ -40,3 +46,21 @@ const calculation = {
     "*": multiply,
     "/": divide,
 }
+
+// function which display typing numbers
+function displayInputNumbers(e){
+    // check if string if number length exceeds max length (9) numeric characters in 'display' element
+    if(inputStr.length > displayInput.maxLength) return;
+    
+    // clear inpuStr variable to prevent displaying 0 before longer number 
+    if(inputStr[0] === '0' && inputStr.length === 1) inputStr = '';
+
+    // we add pressed number to string of number
+    inputStr += e.target.dataset.key;
+    console.log(inputStr);
+
+    //we add string of number to displayInput element;
+    displayInput.value = inputStr; 
+}
+
+digitButtons.forEach( btn => btn.addEventListener('click', displayInputNumbers));
