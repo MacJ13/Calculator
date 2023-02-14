@@ -63,4 +63,22 @@ function displayInputNumbers(e){
     displayInput.value = inputStr; 
 }
 
+function updateOperator(key){
+
+    // assign displayInput value to operand1 and convert to number
+    operand1 = +displayInput.value
+    
+    // assign mathematical operator to variable 'operator' from clicked operator button
+    operator = key;
+
+}
+
+
+// listen events after click on one of the digit buttons
 digitButtons.forEach( btn => btn.addEventListener('click', displayInputNumbers));
+
+// listen event after click on one of the operator buttons
+operatorButtons.forEach( btn => btn.addEventListener('click', e=> {
+    const {key} = e.target.dataset;
+    updateOperator(key);
+}))
