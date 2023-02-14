@@ -113,6 +113,20 @@ function undoTyping(){
     
 }
 
+// function adding decimal point to display string 
+function updateToFloat(decimalPoint){
+    // check if decimal point is added to inputStr variable
+    if(inputStr.includes('.')) return;
+    // check if input is empty we assign 0 to variable
+    if(!inputStr) inputStr = '0';
+
+    // add decimal point to inputStr 
+    inputStr += '.';
+    displayInput.value = inputStr;
+ }
+
+
+
 
 // listen events after click on one of the digit buttons
 digitButtons.forEach( btn => btn.addEventListener('click', displayInputNumbers));
@@ -128,3 +142,6 @@ equationButton.addEventListener('click', operate);
 
 // listen event after click on backspace button
 backspaceButton.addEventListener('click', undoTyping);
+
+// listen event after click on point button
+pointButton.addEventListener('click', updateToFloat);
