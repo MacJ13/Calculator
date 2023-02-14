@@ -125,10 +125,24 @@ function updateToFloat(decimalPoint){
     displayInput.value = inputStr;
  }
 
+
+ // functon calculate percentage of display string of numbers
 function calculatePercentage(){
     // percentage value of displayInput number
-    displayInput.value /= 100;
+    displayInput.value = +displayInput.value / 100;
     inputStr  = displayInput.value;
+}
+
+// function to clear all globar variables;
+function clearAll(){
+    // clear display and assign value of 0
+    displayInput.value = '0';
+
+    // clear assign global variables to initial values
+    inputStr = displayInput.value;
+    operand1 = '';
+    operand2 = '';
+    operator = '';
 }
 
 
@@ -159,4 +173,7 @@ plusminusButton.addEventListener('click', () => {
 
 
 // listen for event of percentageButton
-percentageButton.addEventListener('click', calculatePercentage)
+percentageButton.addEventListener('click', calculatePercentage);
+
+// listen for event after click on clearButton
+clearButton.addEventListener('click', clearAll);
