@@ -10,3 +10,15 @@ body {
     font-family: 'Roboto Mono' monospace;
     margin: 0;
 }
+
+input[type=number],
+input[type=text]{
+    text-align: right;
+    box-sizing: border-box;
+    padding: 10px 15px 10px 25px;
+
+}
+
+input:focus {
+    outline: none;
+}
