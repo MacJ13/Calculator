@@ -125,6 +125,11 @@ function updateToFloat(decimalPoint){
     displayInput.value = inputStr;
  }
 
+function calculatePercentage(){
+    // percentage value of displayInput number
+    displayInput.value /= 100;
+    inputStr  = displayInput.value;
+}
 
 
 
@@ -151,3 +156,7 @@ plusminusButton.addEventListener('click', () => {
     displayInput.value *= (-1) 
     inputStr = displayInput.value;
  });
+
+
+// listen for event of percentageButton
+percentageButton.addEventListener('click', calculatePercentage)
