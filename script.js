@@ -184,3 +184,44 @@ container.addEventListener('click', (e) => {
     }
 
 });
+
+window.addEventListener('keydown', (e) => {
+    const button = document.querySelector(`button[data-key="${e.key}"]`);
+    if(!button) return;
+    
+    switch(button.className){
+
+        case "digit": 
+            displayInputNumbers(e);
+            break;
+
+        case "operator":
+            updateOperator(e.target.dataset.key);
+            break;
+
+        case "equation":
+            operate();
+            break;
+
+        case "backspace":
+            undoTyping();
+            break;
+
+        case "percentage":
+            calculatePercentage();
+            break;
+
+        case "point":
+            updateToFloat();
+            break;
+
+        case "plusminus":
+            displayInput.value *= (-1);
+            inputStr = displayInput.value;
+            break;
+        
+        case "clear":
+            clearAll();
+            break;
+    }
+})
