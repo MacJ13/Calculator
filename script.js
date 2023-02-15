@@ -137,11 +137,48 @@ function clearAll(){
     operator = '';
 }
 
-function chooseAction(e){
+function chooseOperation(btn){
+    // execute mathematical function for specific button element
+    // after clicking on proper button or pressing given keyboard key
+    switch(btn.className){
 
+        case "digit": 
+            displayInputNumbers(btn.dataset.key);
+            break;
+
+        case "operator":
+            updateOperator(btn.dataset.key);
+            break;
+
+        case "equation":
+            operate();
+            break;
+
+        case "backspace":
+            undoTyping();
+            break;
+
+        case "percentage":
+            calculatePercentage();
+            break;
+
+        case "point":
+            updateToFloat();
+            break;
+
+        case "plusminus":
+            displayInput.value *= (-1);
+            inputStr = displayInput.value;
+            break;
+        
+        case "clear":
+            clearAll();
+            break;
+    }
 }
 
-// create event listener for container element
+// event listener for container element, execute
+// specific math 
 container.addEventListener('click', (e) => {
     // check if target element is button type element
     if(!(e.target.nodeName === 'BUTTON')) return;
@@ -149,82 +186,17 @@ container.addEventListener('click', (e) => {
     // get from name of class attribute element
     const btnEl = e.target;
     
-    // execute mathematical function for specific button element
-    switch(btnEl.className){
-
-        case "digit": 
-            displayInputNumbers(btnEl.dataset.key);
-            break;
-
-        case "operator":
-            updateOperator(btnEl.dataset.key);
-            break;
-
-        case "equation":
-            operate();
-            break;
-
-        case "backspace":
-            undoTyping();
-            break;
-
-        case "percentage":
-            calculatePercentage();
-            break;
-
-        case "point":
-            updateToFloat();
-            break;
-
-        case "plusminus":
-            displayInput.value *= (-1);
-            inputStr = displayInput.value;
-            break;
-        
-        case "clear":
-            clearAll();
-            break;
-    }
+    // pass element to execute function on proper button on calculator
+    chooseOperation(btnEl);
 
 });
 
+// event listener after pressing keyboard key
 window.addEventListener('keydown', (e) => {
+    // declare dom element after pressing proper button
     const btnEl = document.querySelector(`button[data-key="${e.key}"]`);
     if(!btnEl) return;
     
-    switch(btnEl.className){
-
-        case "digit": 
-            displayInputNumbers(btnEl.dataset.key);
-            break;
-
-        case "operator":
-            updateOperator(btnEl.dataset.key);
-            break;
-
-        case "equation":
-            operate();
-            break;
-
-        case "backspace":
-            undoTyping();
-            break;
-
-        case "percentage":
-            calculatePercentage();
-            break;
-
-        case "point":
-            updateToFloat();
-            break;
-
-        case "plusminus":
-            displayInput.value *= (-1);
-            inputStr = displayInput.value;
-            break;
-        
-        case "clear":
-            clearAll();
-            break;
-    }
+    // pass element to execute function on proper button
+    chooseOperation(btnEl);
 })
