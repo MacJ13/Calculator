@@ -146,34 +146,49 @@ function clearAll(){
 }
 
 
+const container = document.querySelector('.container');
 
-// listen events after click on one of the digit buttons
-digitButtons.forEach( btn => btn.addEventListener('click', displayInputNumbers));
+container.addEventListener('click', (e) => {
+    if(!(e.target.nodeName === 'BUTTON')) return;
+    
+    const mathOperation = e.target.className;
+    
+    switch(mathOperation){
 
-// listen event after click on one of the operator buttons
-operatorButtons.forEach( btn => btn.addEventListener('click', e=> {
-    const {key} = e.target.dataset;
-    updateOperator(key);
-}))
+        case "digit": 
+            displayInputNumbers(e);
+            break;
 
-// listen event after click on equation button
-equationButton.addEventListener('click', operate);
+        case "operator":
+            updateOperator(e.target.dataset.key);
+            break;
 
-// listen event after click on backspace button
-backspaceButton.addEventListener('click', undoTyping);
+        case "equation":
+            operate();
+            break;
 
-// listen event after click on point button
-pointButton.addEventListener('click', updateToFloat);
+        case "backspace":
+            undoTyping();
+            break;
 
-// listen for event of set positive or negative number
-plusminusButton.addEventListener('click', () => { 
-    displayInput.value *= (-1) 
-    inputStr = displayInput.value;
- });
+        case "percentage":
+            calculatePercentage();
+            break;
 
+        case "point":
+            updateToFloat();
+            break;
 
-// listen for event of percentageButton
-percentageButton.addEventListener('click', calculatePercentage);
+        case "plusminus":
+            displayInput.value *= (-1);
+            inputStr = displayInput.value;
+            break;
+        
+        case "clear":
+            clearAll();
+            break;
+        default:
+            console.log(mathOperation);
+    }
 
-// listen for event after click on clearButton
-clearButton.addEventListener('click', clearAll);
+});
