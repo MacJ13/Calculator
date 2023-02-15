@@ -2,6 +2,8 @@
 const displayInput = document.querySelector('.display');
 const container = document.querySelector('.container');
 
+let btnEl;
+
 // global variable:
 let operand1 = '';
 let operand2 = '';
@@ -137,6 +139,7 @@ function clearAll(){
     operator = '';
 }
 
+
 function chooseOperation(btn){
     // execute mathematical function for specific button element
     // after clicking on proper button or pressing given keyboard key
@@ -183,8 +186,8 @@ container.addEventListener('click', (e) => {
     // check if target element is button type element
     if(!(e.target.nodeName === 'BUTTON')) return;
     
-    // get from name of class attribute element
-    const btnEl = e.target;
+    // get from name of class attribute btn element
+    btnEl = e.target;
     
     // pass element to execute function on proper button on calculator
     chooseOperation(btnEl);
@@ -193,10 +196,19 @@ container.addEventListener('click', (e) => {
 
 // event listener after pressing keyboard key
 window.addEventListener('keydown', (e) => {
-    // declare dom element after pressing proper button
-    const btnEl = document.querySelector(`button[data-key="${e.key}"]`);
+    
+    // assign dom element after pressing proper button
+    btnEl = document.querySelector(`button[data-key="${e.key}"]`);
     if(!btnEl) return;
     
     // pass element to execute function on proper button
     chooseOperation(btnEl);
+
+    // execute function to toggle 'pressed' class from a button element
+    btnEl.classList.toggle('pressed');
 })
+
+// event to toggle 'pressed' class from a button element
+window.addEventListener('keyup', (e) => {
+    btnEl.classList.toggle('pressed');
+});
