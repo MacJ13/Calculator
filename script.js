@@ -1,14 +1,6 @@
 // Dom elements;
 const displayInput = document.querySelector('.display');
-const digitButtons = document.querySelectorAll('.digit');
-const operatorButtons = document.querySelectorAll('.operator');
-const equationButton = document.querySelector('.equation');
-const percentageButton = document.querySelector('.percentage');
-const plusminusButton = document.querySelector('.plusminus');
-const backspaceButton = document.querySelector('.backspace');
-const pointButton = document.querySelector('.point');
-const clearButton = document.querySelector('.clear');
-
+const container = document.querySelector('.container');
 
 // global variable:
 let operand1 = '';
@@ -146,13 +138,15 @@ function clearAll(){
 }
 
 
-const container = document.querySelector('.container');
-
+// create event listener for container element
 container.addEventListener('click', (e) => {
+    // check if target element is button type element
     if(!(e.target.nodeName === 'BUTTON')) return;
     
+    // get from name of class attribute element
     const mathOperation = e.target.className;
     
+    // execute mathematical function for specific button element
     switch(mathOperation){
 
         case "digit": 
@@ -187,8 +181,6 @@ container.addEventListener('click', (e) => {
         case "clear":
             clearAll();
             break;
-        default:
-            console.log(mathOperation);
     }
 
 });
