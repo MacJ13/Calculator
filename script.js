@@ -106,7 +106,7 @@ function undoTyping(){
 }
 
 // function adding decimal point to display string 
-function updateToFloat(decimalPoint){
+function updateToFloat(){
     // check if decimal point is added to inputStr variable
     if(inputStr.includes('.')) return;
     // check if input is empty we assign 0 to variable
@@ -137,6 +137,9 @@ function clearAll(){
     operator = '';
 }
 
+chooseOperation(target){
+
+}
 
 // create event listener for container element
 container.addEventListener('click', (e) => {
