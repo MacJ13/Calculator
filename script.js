@@ -40,7 +40,7 @@ const calculation = {
 }
 
 // function which display typing numbers
-function displayInputNumbers(e){
+function displayInputNumbers(key){
     // check if string if number length exceeds max length (9) numeric characters in 'display' element
     if(inputStr.length > displayInput.maxLength) return;
     
@@ -48,7 +48,7 @@ function displayInputNumbers(e){
     if(inputStr[0] === '0' && inputStr.length === 1) inputStr = '';
 
     // we add pressed number to string of number
-    inputStr += e.target.dataset.key;
+    inputStr += key;
     console.log(inputStr);
 
     //we add string of number to displayInput element;
@@ -137,7 +137,7 @@ function clearAll(){
     operator = '';
 }
 
-chooseOperation(target){
+function chooseAction(e){
 
 }
 
@@ -147,17 +147,17 @@ container.addEventListener('click', (e) => {
     if(!(e.target.nodeName === 'BUTTON')) return;
     
     // get from name of class attribute element
-    const mathOperation = e.target.className;
+    const btnEl = e.target;
     
     // execute mathematical function for specific button element
-    switch(mathOperation){
+    switch(btnEl.className){
 
         case "digit": 
-            displayInputNumbers(e);
+            displayInputNumbers(btnEl.dataset.key);
             break;
 
         case "operator":
-            updateOperator(e.target.dataset.key);
+            updateOperator(btnEl.dataset.key);
             break;
 
         case "equation":
@@ -189,17 +189,17 @@ container.addEventListener('click', (e) => {
 });
 
 window.addEventListener('keydown', (e) => {
-    const button = document.querySelector(`button[data-key="${e.key}"]`);
-    if(!button) return;
+    const btnEl = document.querySelector(`button[data-key="${e.key}"]`);
+    if(!btnEl) return;
     
-    switch(button.className){
+    switch(btnEl.className){
 
         case "digit": 
-            displayInputNumbers(e);
+            displayInputNumbers(btnEl.dataset.key);
             break;
 
         case "operator":
-            updateOperator(e.target.dataset.key);
+            updateOperator(btnEl.dataset.key);
             break;
 
         case "equation":
