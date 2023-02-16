@@ -153,7 +153,7 @@ function chooseOperation(btn){
             updateOperator(btn.dataset.key);
             break;
 
-        case "equation":
+        case "equal":
             operate();
             break;
 
@@ -209,6 +209,6 @@ window.addEventListener('keydown', (e) => {
 })
 
 // event to toggle 'pressed' class from a button element
-window.addEventListener('keyup', (e) => {
+window.addEventListener('keyup', () => {
     btnEl.classList.toggle('pressed');
 });
