@@ -14,8 +14,9 @@ body {
 input[type=number],
 input[type=text]{
     text-align: right;
-    box-sizing: border-box;
-    padding: 10px 15px 10px 25px;
+    
+    
+    border: none;
 
 }
 
@@ -54,16 +55,34 @@ button:active {
     transform: scale(0.955);
 }
 
+.display {
+    font-family: 'Azeret Mono', monospace;
+    box-sizing: border-box;
+    border: 2px solid rgb(59, 59, 59);
+    background-color: white;
+    padding: 10px 15px 10px 25px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    width: 440px;
+}
+
+
+
+.equation {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
 .input {
     font-family: 'Azeret Mono', monospace;
     font-weight: 400;
     font-size: 60px;
-    width: 440px;
-    margin: auto;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-
-    border: 2px solid rgb(59, 59, 59);
+    width: 100%;
+    
+    
+    
+    
+    
 }
 
 .operator,
