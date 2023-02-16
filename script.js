@@ -1,5 +1,5 @@
 // Dom elements;
-const displayInput = document.querySelector('.display');
+const displayInput = document.querySelector('.input');
 const container = document.querySelector('.container');
 
 let btnEl;

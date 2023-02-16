@@ -54,7 +54,7 @@ button:active {
     transform: scale(0.955);
 }
 
-.display {
+.input {
     font-family: 'Azeret Mono', monospace;
     font-weight: 400;
     font-size: 60px;
