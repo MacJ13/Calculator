@@ -150,6 +150,9 @@ function clearAll(){
     operand1 = '';
     operand2 = '';
     operator = '';
+
+    equationElement.textContent = '\xa0';
+    equationArr.length = 0;
 }
 
 
