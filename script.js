@@ -1,6 +1,10 @@
 // Dom elements;
 const displayInput = document.querySelector('.input');
+const equationElement = document.querySelector('.equation');
 const container = document.querySelector('.container');
+
+
+const equationArr = []
 
 let btnEl;
 
@@ -83,6 +87,11 @@ function operate(){
     
     // assign variable operator to empty string after calculation
     operator = '';
+
+    // display second operator and equal sign
+    equationArr.push(operand2.toString(), '=')
+    equationElement.textContent = equationArr.join(' ');
+    equationArr.length = 0;
 }
 
 function updateOperator(key){
@@ -94,6 +103,10 @@ function updateOperator(key){
     
     // assign mathematical operator to variable 'operator' from clicked operator button
     operator = key;
+
+    // display first operand and operator in equation element
+    equationArr.push(operand1.toString(), operator)
+    equationElement.textContent = equationArr.join(' ');
 
 }
 
